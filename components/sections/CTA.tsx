@@ -3,11 +3,10 @@
 import { useMemo, useState } from "react";
 import { MessageCircle } from "lucide-react";
 
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-
-const whatsappNumber = "919999999999";
 
 export function CTA() {
   const [name, setName] = useState("");
@@ -16,8 +15,13 @@ export function CTA() {
 
   const whatsappLink = useMemo(() => {
     const text = `Hi Solvix Studios, I'm ${name || "a business owner"}. Business: ${business || "N/A"}, Phone: ${phone || "N/A"}. I want a free audit.`;
-    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   }, [business, name, phone]);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.open(whatsappLink, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <section id="lead-form" className="px-6 py-24 sm:px-10 lg:px-16">
@@ -33,14 +37,40 @@ export function CTA() {
               </a>
             </Button>
           </div>
-          <form className="space-y-3" onSubmit={(event) => event.preventDefault()}>
-            <Input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <Input placeholder="Business Type" value={business} onChange={(e) => setBusiness(e.target.value)} required />
-            <Input placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-            <Button asChild className="w-full" size="lg">
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                Submit & Continue on WhatsApp
-              </a>
+          <form className="space-y-3" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="name" className="mb-1 block text-xs text-zinc-300">
+                Name
+              </label>
+              <Input id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+            </div>
+            <div>
+              <label htmlFor="business-type" className="mb-1 block text-xs text-zinc-300">
+                Business Type
+              </label>
+              <Input
+                id="business-type"
+                placeholder="Business Type"
+                value={business}
+                onChange={(e) => setBusiness(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="mb-1 block text-xs text-zinc-300">
+                Phone
+              </label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="Phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
+            <Button className="w-full" size="lg" type="submit">
+              Submit & Continue on WhatsApp
             </Button>
           </form>
         </Card>

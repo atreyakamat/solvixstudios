@@ -1,6 +1,7 @@
 import { AlertTriangle, BadgeCheck, BriefcaseBusiness, ShieldCheck } from "lucide-react";
 
 import { CTA } from "@/components/sections/CTA";
+import { CONTACT_EMAIL, INSTAGRAM_URL, WHATSAPP_NUMBER } from "@/lib/constants";
 import { Hero } from "@/components/sections/Hero";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Pricing } from "@/components/sections/Pricing";
@@ -120,13 +121,18 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Solvix Studios. Growth-first digital systems.</p>
           <div className="flex gap-4">
-            <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer">
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact us on WhatsApp"
+            >
               WhatsApp
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
-            <a href="mailto:hello@solvixstudios.com">hello@solvixstudios.com</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
         </div>
       </footer>
