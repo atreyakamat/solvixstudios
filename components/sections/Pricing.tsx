@@ -1,68 +1,110 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { motion } from "framer-motion";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const plans = [
+const tiers = [
   {
     name: "Starter",
     price: "₹6K–₹8K",
+    description: "Ideal for new businesses needing a professional digital presence.",
+    features: [
+      "Custom 1-page high-converting website",
+      "Mobile & Tablet optimized",
+      "Basic lead capture form",
+      "Speed & SEO optimization",
+      "1-week rapid delivery",
+    ],
+    cta: "Start Basic",
     popular: false,
-    features: ["High-converting one-page site", "WhatsApp CTA integration", "3-day launch"],
   },
   {
     name: "Growth",
     price: "₹8K–₹15K",
+    description: "Our signature growth system with AI automation.",
+    features: [
+      "Multi-page custom design",
+      "Advanced lead capture funnels",
+      "Instant WhatsApp lead alerts",
+      "Basic n8n automation sync",
+      "24/7 Lead tracking dashboard",
+    ],
+    cta: "Get the Growth System",
     popular: true,
-    features: ["Multi-section conversion funnel", "Lead capture form", "Basic analytics setup"],
   },
   {
     name: "Premium",
     price: "₹15K+",
+    description: "Fully custom enterprise-grade automation systems.",
+    features: [
+      "Custom web application",
+      "Full n8n workflow engineering",
+      "CRM & API integrations",
+      "Automated follow-up sequences",
+      "Priority maintenance & updates",
+    ],
+    cta: "Go Premium",
     popular: false,
-    features: ["Advanced strategy build", "Automation-ready architecture", "Priority support"],
   },
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="px-6 py-20 sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-3xl font-semibold text-white sm:text-4xl">Simple pricing. Fast outcomes.</h2>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {plans.map((plan, index) => (
+    <section className="py-32 relative" id="pricing">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center mb-20">
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Investment for <span className="text-blue-500">Growth.</span>
+          </h2>
+          <p className="mt-6 text-lg text-zinc-400">
+            Choose the system that matches your current scale.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {tiers.map((tier, index) => (
             <motion.div
-              key={plan.name}
+              key={tier.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.07 }}
+              transition={{ delay: index * 0.1 }}
+              className={`relative rounded-3xl p-8 transition-all hover:scale-[1.02] ${
+                tier.popular 
+                ? "bg-gradient-to-b from-blue-600/20 to-black border-2 border-blue-500/50 shadow-2xl shadow-blue-500/10" 
+                : "bg-white/5 border border-white/10"
+              }`}
             >
-              <Card className={plan.popular ? "border-blue-400/45" : ""}>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle>{plan.name}</CardTitle>
-                    {plan.popular ? (
-                      <span className="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-200">Most Popular</span>
-                    ) : null}
+              {tier.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 px-4 py-1 text-xs font-bold uppercase tracking-widest text-white shadow-lg">
+                  Most Popular
+                </div>
+              )}
+              
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-white mb-2">{tier.name}</h3>
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-4xl font-bold text-white tracking-tight">{tier.price}</span>
+                </div>
+                <p className="text-zinc-400 text-sm leading-relaxed">{tier.description}</p>
+              </div>
+
+              <div className="space-y-4 mb-10">
+                {tier.features.map((feature) => (
+                  <div key={feature} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <Check className="h-5 w-5 text-blue-500 shrink-0" />
+                    <span>{feature}</span>
                   </div>
-                  <p className="text-2xl font-bold text-white">{plan.price}</p>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {plan.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-2 text-sm text-zinc-300">
-                      <Check className="mt-0.5 h-4 w-4 text-emerald-300" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                  <Button asChild className="mt-4 w-full">
-                    <a href="#lead-form">Choose {plan.name}</a>
-                  </Button>
-                </CardContent>
-              </Card>
+                ))}
+              </div>
+
+              <Button 
+                variant={tier.popular ? "default" : "secondary"} 
+                className="w-full h-12 text-md"
+              >
+                {tier.cta}
+              </Button>
             </motion.div>
           ))}
         </div>
