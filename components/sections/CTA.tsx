@@ -1,53 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { MessageCircle, Sparkles, Send } from "lucide-react";
 import { LeadForm } from "@/components/LeadForm";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export function CTA() {
   return (
-    <section className="relative py-32 overflow-hidden" id="contact">
+    <section className="relative py-32 overflow-hidden bg-dot-pattern" id="contact">
+      {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full max-w-5xl bg-gradient-to-t from-blue-600/20 to-transparent blur-[120px]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full max-w-7xl bg-gradient-to-t from-purple-600/20 to-transparent blur-[120px] opacity-50" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-400 mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-8 tracking-tighter uppercase">
               <Sparkles className="h-4 w-4" />
               Scale your business
             </div>
-            <h2 className="text-5xl font-bold tracking-tight text-white sm:text-6xl mb-8">
-              Start getting customers <br />
-              <span className="text-blue-500">automatically.</span>
+            <h2 className="text-6xl font-black tracking-tighter text-[var(--foreground)] sm:text-8xl mb-8 leading-[0.9]">
+              Start getting <br />
+              customers <br />
+              <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent italic">automatically.</span>
             </h2>
-            <p className="text-xl text-zinc-400 mb-10 leading-relaxed">
-              Stop losing leads to outdated websites and slow follow-ups. 
-              Our systems capture, track, and notify you of every opportunity 
-              the second it happens.
+            <p className="text-xl font-bold text-zinc-500 italic mb-12 leading-relaxed max-w-lg">
+              Stop losing leads to outdated systems. We engineer the future of your business growth while you focus on what you do best.
             </p>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4 text-zinc-300">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-emerald-400">
-                  <MessageCircle className="h-5 w-5" />
-                </div>
+            <div className="flex flex-col gap-10">
+              <div className="flex items-center gap-6">
+                <motion.div 
+                   whileHover={{ scale: 1.1, rotate: 10 }}
+                   className="flex h-16 w-16 items-center justify-center rounded-3xl bg-emerald-500 text-white shadow-2xl shadow-emerald-500/20"
+                >
+                  <MessageCircle size={32} />
+                </motion.div>
                 <div>
-                  <p className="font-semibold">Prefer WhatsApp?</p>
+                  <p className="text-lg font-black text-[var(--foreground)] uppercase tracking-tight">Prefer WhatsApp?</p>
                   <a 
                     href={`https://wa.me/${WHATSAPP_NUMBER}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-sm text-zinc-500 hover:text-white transition-colors"
+                    className="text-lg font-bold text-zinc-500 hover:text-purple-500 transition-colors italic border-b-2 border-transparent hover:border-purple-500"
                   >
-                    Click here to chat instantly →
+                    Chat with us instantly →
                   </a>
                 </div>
               </div>
@@ -55,14 +58,19 @@ export function CTA() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="rounded-3xl border border-white/10 bg-black/40 p-8 md:p-12 backdrop-blur-xl shadow-2xl shadow-blue-500/10"
+            className="rounded-[3rem] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-10 md:p-14 backdrop-blur-3xl shadow-2xl shadow-purple-500/10 relative"
           >
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Request a Free Audit</h3>
-              <p className="text-zinc-400">We'll analyze your current site and show you the gaps.</p>
+            {/* Decorative Icon */}
+             <div className="absolute -top-8 -right-8 h-20 w-20 rounded-3xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white shadow-2xl rotate-12">
+                <Send size={32} />
+             </div>
+
+            <div className="mb-10">
+              <h3 className="text-3xl font-black text-[var(--foreground)] mb-3 tracking-tight uppercase">Request Free Audit</h3>
+              <p className="text-lg font-bold text-zinc-500 italic">We'll identify every leak in your current funnel.</p>
             </div>
             <LeadForm />
           </motion.div>

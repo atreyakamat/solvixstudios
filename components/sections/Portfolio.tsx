@@ -1,82 +1,100 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Trophy } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const projects = [
   {
     client: "SmileCare Dental",
     industry: "Clinic",
-    result: "140% more bookings",
+    result: "+140% Bookings",
     features: ["WhatsApp Booking", "Lead Notification"],
-    image: "bg-blue-600/20",
+    image: "from-blue-600/30 to-purple-600/30",
   },
   {
     client: "Titan Fitness",
     industry: "Gym",
-    result: "45 members/month",
+    result: "45 New Members/mo",
     features: ["Automated Funnel", "Member Portal"],
-    image: "bg-purple-600/20",
+    image: "from-purple-600/30 to-pink-600/30",
   },
   {
     client: "Peak Academy",
     industry: "Education",
     result: "Instant Lead Sync",
     features: ["n8n Workflow", "CRM Sync"],
-    image: "bg-emerald-600/20",
+    image: "from-emerald-600/30 to-blue-600/30",
   },
 ];
 
 export function Portfolio() {
   return (
-    <section className="py-32" id="portfolio">
+    <section className="py-32 relative overflow-hidden" id="portfolio">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-24">
           <div className="max-w-2xl">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Engineered for <span className="text-blue-500">Results.</span>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-6 tracking-tighter"
+            >
+              <Trophy size={14} className="fill-current" />
+              CASE STUDIES
+            </motion.div>
+            <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl">
+              Engineered for <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent italic">Results.</span>
             </h2>
-            <p className="mt-6 text-lg text-zinc-400">
+            <p className="mt-8 text-xl font-bold text-zinc-500 italic leading-relaxed">
               We don't just build websites; we build growth engines. 
-              See how we transformed these local businesses.
+              See the transformation for yourself.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group"
             >
-              <Card className="group relative overflow-hidden border-white/10 bg-black/40 p-1 hover:border-blue-500/50 transition-all">
-                <div className={`h-64 w-full rounded-2xl ${project.image} relative flex items-center justify-center overflow-hidden`}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                  <span className="text-2xl font-black uppercase tracking-tighter text-white/10 group-hover:scale-125 transition-transform duration-700">
+              <Card className="h-full overflow-hidden border-[var(--glass-border)] bg-[var(--glass-bg)] p-3 transition-all duration-500 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className={`h-72 w-full rounded-2xl bg-gradient-to-br ${project.image} relative flex items-center justify-center overflow-hidden`}>
+                   <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+                  <span className="text-3xl font-black uppercase tracking-tighter text-white/5 group-hover:text-white/20 group-hover:scale-110 transition-all duration-700 italic">
                     {project.client}
                   </span>
-                  <div className="absolute bottom-6 left-6">
-                    <span className="rounded-full bg-blue-500 px-3 py-1 text-xs font-bold text-white uppercase tracking-wider">
-                      {project.result}
-                    </span>
+                  
+                  {/* Floating Result Badge */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-4 shadow-2xl">
+                       <span className="block text-xs font-black text-white/60 uppercase tracking-widest mb-1">Key Outcome</span>
+                       <span className="text-xl font-black text-white italic tracking-tight">{project.result}</span>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">{project.industry}</span>
-                    <ArrowUpRight className="h-4 w-4 text-zinc-500 group-hover:text-white transition-colors" />
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="rounded-lg bg-purple-500/10 px-3 py-1 text-xs font-black uppercase tracking-widest text-purple-500 border border-purple-500/20">
+                      {project.industry}
+                    </span>
+                    <div className="h-10 w-10 rounded-xl bg-[var(--glass-border)] flex items-center justify-center group-hover:bg-purple-500 transition-colors">
+                      <ArrowUpRight className="h-5 w-5 text-[var(--foreground)] group-hover:text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-6">{project.client}</h3>
+                  <h3 className="text-3xl font-black text-[var(--foreground)] mb-6 tracking-tight italic">{project.client}</h3>
                   
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {project.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-zinc-400">
-                        <CheckCircle2 className="h-4 w-4 text-blue-500/50" />
+                      <div key={i} className="flex items-center gap-3 text-sm font-bold text-zinc-500 dark:text-zinc-400">
+                        <CheckCircle2 className="h-5 w-5 text-purple-500/50 shrink-0" />
                         {feature}
                       </div>
                     ))}

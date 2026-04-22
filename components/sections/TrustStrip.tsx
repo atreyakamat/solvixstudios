@@ -8,24 +8,26 @@ const logos = [
 
 export function TrustStrip() {
   return (
-    <section className="border-y border-white/5 bg-white/[0.01] py-8">
+    <section className="border-y border-[var(--glass-border)] bg-[var(--glass-bg)] py-12 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold uppercase tracking-wider text-zinc-500">
+        <p className="text-center text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-10">
           Trusted by growing businesses
         </p>
-        <div className="mt-8 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
+        <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
           <motion.div
-            className="flex min-w-full shrink-0 items-center justify-around gap-8 py-4"
-            animate={{ x: [0, -1035] }}
+            className="flex min-w-full shrink-0 items-center justify-around gap-20 py-4"
+            animate={{ x: [0, -1000] }}
             transition={{
               repeat: Infinity,
               ease: "linear",
-              duration: 20,
+              duration: 25,
             }}
           >
-            {[...logos, ...logos, ...logos].map((logo, i) => (
+            {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
               <div key={i} className="flex items-center justify-center">
-                <span className="text-xl font-bold text-zinc-700/80">{logo}</span>
+                <span className="text-3xl font-black text-zinc-300 dark:text-zinc-800 hover:text-purple-500 transition-colors cursor-default italic uppercase tracking-tighter">
+                  {logo}
+                </span>
               </div>
             ))}
           </motion.div>
