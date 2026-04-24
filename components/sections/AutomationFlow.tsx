@@ -6,29 +6,29 @@ import { Bot, Database, Globe, Smartphone, ArrowRight, Zap } from "lucide-react"
 const steps = [
   {
     icon: Globe,
-    title: "User Visit",
-    description: "Visitor lands on your optimized site.",
+    title: "User Inquiry",
+    description: "Visitor lands on your site or calls your business number.",
     color: "purple",
     glow: "shadow-purple-500/20",
   },
   {
     icon: Bot,
-    title: "n8n Trigger",
-    description: "AI captures the data instantly.",
+    title: "AI Receptionist",
+    description: "Our AI answers questions and captures lead data instantly.",
     color: "blue",
     glow: "shadow-blue-500/20",
   },
   {
     icon: Smartphone,
     title: "WhatsApp Alert",
-    description: "You get notified on your phone.",
+    description: "You get notified on your phone with full context.",
     color: "pink",
     glow: "shadow-pink-500/20",
   },
   {
     icon: Database,
-    title: "Lead Saved",
-    description: "Data synced to your CRM/Sheets.",
+    title: "Data Synced",
+    description: "Automations push data to your CRM and Google Sheets.",
     color: "indigo",
     glow: "shadow-indigo-500/20",
   },
@@ -43,9 +43,11 @@ export function AutomationFlow() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-6 tracking-tighter"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-sm font-black text-purple-500 mb-6 tracking-tighter skeuo cursor-pointer active:skeuo-inset transition-shadow"
           >
-            <Zap className="h-4 w-4 fill-current" />
+            <Zap className="h-4 w-4 fill-current text-purple-500" />
             THE SOLVIX ENGINE
           </motion.div>
           <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl">
@@ -55,7 +57,7 @@ export function AutomationFlow() {
 
         <div className="relative mx-auto max-w-5xl">
           {/* Animated Background Connector Line */}
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent hidden lg:block -translate-y-1/2 overflow-hidden">
+          <div className="absolute top-1/2 left-0 w-full h-2 rounded-full skeuo-inset bg-[var(--glass-bg)] hidden lg:block -translate-y-1/2 overflow-hidden border border-[var(--glass-border)]">
              <motion.div 
                animate={{ x: ["-100%", "100%"] }}
                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -71,12 +73,18 @@ export function AutomationFlow() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, type: "spring", damping: 15 }}
-                className="relative group"
+                className="relative group cursor-pointer"
+                whileHover={{ y: -15, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <div className="relative z-10 flex flex-col items-center text-center p-10 rounded-[2.5rem] border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-3xl transition-all duration-500 group-hover:border-purple-500/50 group-hover:scale-105 group-hover:rotate-1">
-                  <div className={`mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 text-white shadow-2xl group-hover:rotate-12 transition-transform`}>
+                <div className="relative z-10 flex flex-col items-center text-center p-10 rounded-[2.5rem] border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-3xl skeuo group-active:skeuo-inset transition-all duration-300">
+                  <motion.div 
+                    className={`mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 text-white shadow-2xl skeuo`}
+                    whileHover={{ rotate: 15, scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <step.icon size={36} />
-                  </div>
+                  </motion.div>
                   <h3 className="text-2xl font-black text-[var(--foreground)] mb-3 tracking-tight">{step.title}</h3>
                   <p className="text-zinc-500 dark:text-zinc-400 text-sm font-medium leading-relaxed">{step.description}</p>
                   
@@ -103,11 +111,12 @@ export function AutomationFlow() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 mx-auto max-w-2xl p-8 rounded-3xl border border-purple-500/10 bg-purple-500/5 text-center backdrop-blur-xl"
+          whileHover={{ scale: 1.02 }}
+          className="mt-20 mx-auto max-w-2xl p-8 rounded-[2rem] border border-[var(--glass-border)] bg-[var(--glass-bg)] text-center backdrop-blur-xl skeuo cursor-default"
         >
-          <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs mb-2">Efficiency Boost</p>
+          <p className="text-purple-500 font-bold uppercase tracking-widest text-xs mb-2">Efficiency Boost</p>
           <p className="text-2xl font-black text-[var(--foreground)]">
-            Response time reduced from <span className="text-red-500 italic">4 hours</span> to <span className="text-emerald-500 text-glow-purple">4 seconds.</span>
+            Response time reduced from <span className="text-red-500 italic drop-shadow-sm">4 hours</span> to <span className="text-emerald-500 text-glow-purple italic drop-shadow-md">4 seconds.</span>
           </p>
         </motion.div>
       </div>
