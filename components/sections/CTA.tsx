@@ -21,16 +21,16 @@ export function CTA() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-8 tracking-tighter uppercase">
+            <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-extrabold text-purple-500 mb-8 tracking-tight uppercase">
               <Sparkles className="h-4 w-4" />
               Scale your business
             </div>
-            <h2 className="text-6xl font-black tracking-tighter text-[var(--foreground)] sm:text-8xl mb-8 leading-[0.9]">
+            <h2 className="text-6xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-8xl mb-8 leading-[0.9]">
               Start getting <br />
               customers <br />
-              <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent italic">automatically.</span>
+              <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">automatically.</span>
             </h2>
-            <p className="text-xl font-bold text-zinc-500 italic mb-12 leading-relaxed max-w-lg">
+            <p className="text-xl font-bold text-zinc-500 mb-12 leading-relaxed max-w-lg">
               Stop losing leads to outdated systems. We engineer the future of your business growth while you focus on what you do best.
             </p>
 
@@ -43,12 +43,12 @@ export function CTA() {
                   <MessageCircle size={32} />
                 </motion.div>
                 <div>
-                  <p className="text-lg font-black text-[var(--foreground)] uppercase tracking-tight">Prefer WhatsApp?</p>
+                  <p className="text-lg font-extrabold text-[var(--foreground)] uppercase tracking-tight">Prefer WhatsApp?</p>
                   <a 
                     href={`https://wa.me/${WHATSAPP_NUMBER}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-lg font-bold text-zinc-500 hover:text-purple-500 transition-colors italic border-b-2 border-transparent hover:border-purple-500"
+                    className="text-lg font-bold text-zinc-500 hover:text-purple-500 transition-colors border-b-2 border-transparent hover:border-purple-500"
                   >
                     Chat with us instantly →
                   </a>
@@ -69,8 +69,8 @@ export function CTA() {
              </div>
 
             <div className="mb-10">
-              <h3 className="text-3xl font-black text-[var(--foreground)] mb-3 tracking-tight uppercase">Request Free Audit</h3>
-              <p className="text-lg font-bold text-zinc-500 italic">We'll identify every leak in your current funnel.</p>
+              <h3 className="text-3xl font-extrabold text-[var(--foreground)] mb-3 tracking-tight uppercase">Request Free Audit</h3>
+              <p className="text-lg font-bold text-zinc-500">We'll identify every leak in your current funnel.</p>
             </div>
             <LeadForm />
           </motion.div>

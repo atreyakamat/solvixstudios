@@ -40,10 +40,13 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         <a href="#" className="flex items-center gap-3 group">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all group-hover:scale-110 group-hover:rotate-3">
-            <span className="text-2xl font-black text-white italic">S</span>
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--foreground)] shadow-sm transition-all group-hover:scale-105">
+            <span className="text-xl font-bold text-[var(--background)]">S</span>
           </div>
-          <span className="text-2xl font-black tracking-tighter text-[var(--foreground)]">SOLVIX</span>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-tight text-[var(--foreground)] leading-none">Solvix</span>
+            <span className="text-[0.6rem] font-medium uppercase tracking-widest text-zinc-500 leading-none mt-1">By StixNVibes</span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -110,7 +113,7 @@ export function Header() {
                   transition={{ delay: i * 0.1 }}
                   key={link.name}
                   href={link.href}
-                  className="text-4xl font-black uppercase tracking-tighter text-[var(--foreground)]"
+                  className="text-4xl font-extrabold uppercase tracking-tight text-[var(--foreground)]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

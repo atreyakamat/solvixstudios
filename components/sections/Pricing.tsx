@@ -62,15 +62,15 @@ export function Pricing() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-6 tracking-tighter"
+            className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-extrabold text-purple-500 mb-6 tracking-tight"
           >
             <Zap size={14} className="fill-current" />
             INVESTMENT
           </motion.div>
-          <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl">
+          <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
             Investment for <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Growth.</span>
           </h2>
-          <p className="mt-6 text-lg font-bold text-zinc-500 italic">
+          <p className="mt-6 text-lg font-bold text-zinc-500">
             Choose the system that matches your current scale.
           </p>
         </div>
@@ -91,15 +91,15 @@ export function Pricing() {
                 : "hover:border-purple-500/30"
               }`}>
                 {tier.popular && (
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-purple-500/20">
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 text-xs font-extrabold uppercase tracking-widest text-white shadow-xl shadow-purple-500/20">
                     Most Popular
                   </div>
                 )}
                 
                 <div className="mb-10 text-center lg:text-left">
-                  <h3 className="text-2xl font-black text-[var(--foreground)] mb-4 tracking-tight uppercase">{tier.name}</h3>
+                  <h3 className="text-2xl font-extrabold text-[var(--foreground)] mb-4 tracking-tight uppercase">{tier.name}</h3>
                   <div className="flex items-baseline justify-center lg:justify-start gap-2 mb-6">
-                    <span className="text-5xl font-black text-[var(--foreground)] tracking-tighter italic">{tier.price}</span>
+                    <span className="text-5xl font-extrabold text-[var(--foreground)] tracking-tight">{tier.price}</span>
                   </div>
                   <p className="text-zinc-500 font-medium leading-relaxed">{tier.description}</p>
                 </div>
@@ -117,7 +117,7 @@ export function Pricing() {
 
                 <Button 
                   variant={tier.popular ? "default" : "secondary"} 
-                  className={`w-full h-16 text-lg font-black tracking-widest uppercase transition-all ${
+                  className={`w-full h-16 text-lg font-extrabold tracking-widest uppercase transition-all ${
                     tier.popular ? "shadow-xl shadow-purple-500/20" : ""
                   }`}
                 >

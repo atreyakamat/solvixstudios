@@ -38,12 +38,12 @@ export function Problem() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="text-purple-500 font-black tracking-widest uppercase text-xs mb-4">The Reality</div>
-            <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl mb-8">
+            <div className="text-purple-500 font-extrabold tracking-widest uppercase text-xs mb-4">The Reality</div>
+            <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl mb-8">
               Running a business is hard. <br />
-              <span className="text-zinc-500 italic opacity-50">Generating leads shouldn't be.</span>
+              <span className="text-zinc-500 opacity-50">Generating leads shouldn't be.</span>
             </h2>
-            <p className="text-xl font-bold text-zinc-500 italic leading-relaxed mb-10">
+            <p className="text-xl font-bold text-zinc-500 leading-relaxed mb-10">
               Most local businesses have a "leaky bucket" problem. 
               They spend time and money on marketing, only for leads to 
               disappear into the void.
@@ -52,7 +52,7 @@ export function Problem() {
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-purple-500 text-white shadow-xl rotate-3">
                 <Zap size={28} className="fill-current" />
               </div>
-              <p className="text-lg font-black text-[var(--foreground)] tracking-tight leading-snug uppercase">
+              <p className="text-lg font-extrabold text-[var(--foreground)] tracking-tight leading-snug uppercase">
                 Stop the leak. Start the engine.
               </p>
             </div>
@@ -70,7 +70,7 @@ export function Problem() {
               >
                 <Card className="h-full border-[var(--glass-border)] bg-[var(--glass-bg)] p-8 hover:border-purple-500/50">
                   <problem.icon className="h-8 w-8 text-purple-500 mb-6" />
-                  <h3 className="text-xl font-black text-[var(--foreground)] mb-3 tracking-tight uppercase">{problem.title}</h3>
+                  <h3 className="text-xl font-extrabold text-[var(--foreground)] mb-3 tracking-tight uppercase">{problem.title}</h3>
                   <p className="text-sm font-medium text-zinc-500 leading-relaxed">{problem.description}</p>
                 </Card>
               </motion.div>

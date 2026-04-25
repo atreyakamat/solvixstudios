@@ -10,7 +10,7 @@ export function TrustStrip() {
   return (
     <section className="border-y border-[var(--glass-border)] bg-[var(--glass-bg)] py-12 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p className="text-center text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-10">
+        <p className="text-center text-xs font-extrabold uppercase tracking-[0.3em] text-zinc-500 mb-10">
           Trusted by growing businesses
         </p>
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
@@ -25,7 +25,7 @@ export function TrustStrip() {
           >
             {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
               <div key={i} className="flex items-center justify-center">
-                <span className="text-3xl font-black text-zinc-300 dark:text-zinc-800 hover:text-purple-500 transition-colors cursor-default italic uppercase tracking-tighter">
+                <span className="text-3xl font-extrabold text-zinc-300 dark:text-zinc-800 hover:text-purple-500 transition-colors cursor-default uppercase tracking-tight">
                   {logo}
                 </span>
               </div>

@@ -27,7 +27,7 @@ export function Testimonials() {
     <section className="py-32 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-24">
-          <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl italic">
+          <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
             LOVED BY <span className="text-purple-500">GROWTH LEADERS.</span>
           </h2>
         </div>
@@ -55,11 +55,11 @@ export function Testimonials() {
                 </p>
                 
                 <div className="flex items-center gap-5">
-                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center font-black text-white text-xl shadow-xl italic">
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center font-extrabold text-white text-xl shadow-xl">
                     {testimonial.author.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-black text-[var(--foreground)] text-lg tracking-tight uppercase">{testimonial.author}</p>
+                    <p className="font-extrabold text-[var(--foreground)] text-lg tracking-tight uppercase">{testimonial.author}</p>
                     <p className="text-zinc-500 text-sm font-bold uppercase tracking-widest">{testimonial.role}</p>
                   </div>
                 </div>

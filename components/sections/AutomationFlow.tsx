@@ -45,13 +45,13 @@ export function AutomationFlow() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-sm font-black text-purple-500 mb-6 tracking-tighter skeuo cursor-pointer active:skeuo-inset transition-shadow"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-sm font-extrabold text-purple-500 mb-6 tracking-tight skeuo cursor-pointer active:skeuo-inset transition-shadow"
           >
             <Zap className="h-4 w-4 fill-current text-purple-500" />
             THE SOLVIX ENGINE
           </motion.div>
-          <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl">
-            A system that works <span className="text-zinc-500 italic opacity-50">while you sleep.</span>
+          <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
+            A system that works <span className="text-zinc-500 opacity-50">while you sleep.</span>
           </h2>
         </div>
 
@@ -85,7 +85,7 @@ export function AutomationFlow() {
                   >
                     <step.icon size={36} />
                   </motion.div>
-                  <h3 className="text-2xl font-black text-[var(--foreground)] mb-3 tracking-tight">{step.title}</h3>
+                  <h3 className="text-2xl font-extrabold text-[var(--foreground)] mb-3 tracking-tight">{step.title}</h3>
                   <p className="text-zinc-500 dark:text-zinc-400 text-sm font-medium leading-relaxed">{step.description}</p>
                   
                   {index < steps.length - 1 && (
@@ -115,8 +115,8 @@ export function AutomationFlow() {
           className="mt-20 mx-auto max-w-2xl p-8 rounded-[2rem] border border-[var(--glass-border)] bg-[var(--glass-bg)] text-center backdrop-blur-xl skeuo cursor-default"
         >
           <p className="text-purple-500 font-bold uppercase tracking-widest text-xs mb-2">Efficiency Boost</p>
-          <p className="text-2xl font-black text-[var(--foreground)]">
-            Response time reduced from <span className="text-red-500 italic drop-shadow-sm">4 hours</span> to <span className="text-emerald-500 text-glow-purple italic drop-shadow-md">4 seconds.</span>
+          <p className="text-2xl font-extrabold text-[var(--foreground)]">
+            Response time reduced from <span className="text-red-500 drop-shadow-sm">4 hours</span> to <span className="text-emerald-500 text-glow-purple drop-shadow-md">4 seconds.</span>
           </p>
         </motion.div>
       </div>

@@ -15,15 +15,15 @@ export function Solution() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-sm font-black text-purple-500 mb-6 uppercase tracking-tighter"
+            className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-sm font-extrabold text-purple-500 mb-6 uppercase tracking-tight"
           >
             <Zap className="h-4 w-4 fill-current" />
             THE SOLVIX DIFFERENCE
           </motion.div>
-          <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl">
-            We turn traffic into <span className="text-purple-500 italic">conversations.</span>
+          <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
+            We turn traffic into <span className="text-purple-500">conversations.</span>
           </h2>
-          <p className="mt-8 text-xl font-bold text-zinc-500 italic leading-relaxed">
+          <p className="mt-8 text-xl font-bold text-zinc-500 leading-relaxed">
             A seamless bridge between your website and your phone. We build systems that capture attention and instantly connect you with customers.
           </p>
         </div>
@@ -40,7 +40,7 @@ export function Solution() {
                 <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-500 text-white shadow-xl rotate-3 group-hover:rotate-6 transition-transform">
                   <MousePointerClick size={32} />
                 </div>
-                <h3 className="text-3xl font-black text-[var(--foreground)] mb-4 uppercase tracking-tight">Conversion Engines</h3>
+                <h3 className="text-3xl font-extrabold text-[var(--foreground)] mb-4 uppercase tracking-tight">Conversion Engines</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed mb-8">
                   Beautiful, fast loading sites engineered specifically to make visitors take action.
                 </p>
@@ -67,7 +67,7 @@ export function Solution() {
                 <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500 text-white shadow-xl -rotate-3 group-hover:-rotate-6 transition-transform">
                   <MessageSquare size={32} />
                 </div>
-                <h3 className="text-3xl font-black text-[var(--foreground)] mb-4 uppercase tracking-tight">WhatsApp Instant</h3>
+                <h3 className="text-3xl font-extrabold text-[var(--foreground)] mb-4 uppercase tracking-tight">WhatsApp Instant</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed mb-8">
                   The moment a lead fills out your form, you get a WhatsApp message with their details.
                 </p>
