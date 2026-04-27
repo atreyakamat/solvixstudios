@@ -19,7 +19,6 @@ const tiers = [
     ],
     cta: "Start Basic",
     popular: false,
-    color: "from-zinc-500 to-zinc-700",
   },
   {
     name: "Growth",
@@ -34,7 +33,6 @@ const tiers = [
     ],
     cta: "Get the Growth System",
     popular: true,
-    color: "from-purple-600 to-blue-600",
   },
   {
     name: "Premium",
@@ -49,7 +47,6 @@ const tiers = [
     ],
     cta: "Go Premium",
     popular: false,
-    color: "from-blue-600 to-cyan-600",
   },
 ];
 
@@ -59,66 +56,64 @@ export function Pricing() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-24">
            <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1.5 text-sm font-extrabold text-purple-500 mb-6 tracking-tight"
+            className="inline-flex items-center gap-2 mb-6"
           >
-            <Zap size={14} className="fill-current" />
-            INVESTMENT
+             <div className="w-8 h-[1px] bg-purple-500" />
+             <span className="text-[0.65rem] font-black uppercase tracking-[0.4em] text-purple-500">Tiered Investment</span>
           </motion.div>
           <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
-            Investment for <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">Growth.</span>
+            Choose your <span className="text-purple-600 dark:text-purple-400">Scale.</span>
           </h2>
-          <p className="mt-6 text-lg font-bold text-zinc-500">
-            Choose the system that matches your current scale.
+          <p className="mt-8 text-lg font-medium text-zinc-500">
+            Authoritative systems designed for every stage of business growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 items-stretch">
           {tiers.map((tier, index) => (
             <motion.div
               key={tier.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.05 }}
               className="relative flex h-full"
             >
-              <Card className={`relative flex flex-col w-full p-10 transition-all duration-500 hover:scale-[1.02] ${
+              <Card className={`relative flex flex-col w-full p-10 transition-all duration-300 ${
                 tier.popular 
-                ? "border-purple-500 bg-gradient-to-b from-purple-500/[0.05] to-transparent shadow-2xl shadow-purple-500/10 ring-1 ring-purple-500/50" 
-                : "hover:border-purple-500/30"
+                ? "border-purple-500 bg-[var(--foreground)] text-[var(--background)] shadow-2xl shadow-purple-500/10" 
+                : "bg-[var(--card-bg)] hover:border-purple-500/30"
               }`}>
                 {tier.popular && (
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 text-xs font-extrabold uppercase tracking-widest text-white shadow-xl shadow-purple-500/20">
-                    Most Popular
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-purple-500 px-4 py-1 text-[0.6rem] font-black uppercase tracking-widest text-white shadow-xl shadow-purple-500/20">
+                    Recommended
                   </div>
                 )}
                 
-                <div className="mb-10 text-center lg:text-left">
-                  <h3 className="text-2xl font-extrabold text-[var(--foreground)] mb-4 tracking-tight uppercase">{tier.name}</h3>
-                  <div className="flex items-baseline justify-center lg:justify-start gap-2 mb-6">
-                    <span className="text-5xl font-extrabold text-[var(--foreground)] tracking-tight">{tier.price}</span>
+                <div className="mb-10 text-center">
+                  <h3 className={`text-sm font-black mb-4 tracking-[0.2em] uppercase ${tier.popular ? 'text-zinc-400' : 'text-zinc-500'}`}>{tier.name}</h3>
+                  <div className="flex items-baseline justify-center gap-1 mb-6">
+                    <span className="text-5xl font-extrabold tracking-tight">{tier.price}</span>
                   </div>
-                  <p className="text-zinc-500 font-medium leading-relaxed">{tier.description}</p>
+                  <p className={`text-xs font-bold leading-relaxed ${tier.popular ? 'text-zinc-300' : 'text-zinc-500'}`}>{tier.description}</p>
                 </div>
 
-                <div className="space-y-5 mb-12 flex-grow">
+                <div className="space-y-4 mb-12 flex-grow">
                   {tier.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-4 text-sm font-bold text-zinc-400 dark:text-zinc-500">
-                      <div className="h-5 w-5 rounded-full bg-purple-500/10 flex items-center justify-center shrink-0">
-                        <Check className="h-3 w-3 text-purple-500" strokeWidth={4} />
-                      </div>
-                      <span className="leading-tight">{feature}</span>
+                    <div key={feature} className="flex items-start gap-4 text-xs font-bold">
+                      <Check className={`h-4 w-4 shrink-0 ${tier.popular ? 'text-purple-400' : 'text-purple-500'}`} strokeWidth={3} />
+                      <span className={tier.popular ? 'text-zinc-200' : 'text-zinc-500'}>{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <Button 
                   variant={tier.popular ? "default" : "secondary"} 
-                  className={`w-full h-16 text-lg font-extrabold tracking-widest uppercase transition-all ${
-                    tier.popular ? "shadow-xl shadow-purple-500/20" : ""
+                  className={`w-full h-14 text-xs font-black tracking-widest uppercase transition-all ${
+                    tier.popular ? "bg-white text-black hover:bg-zinc-200 border-none" : ""
                   }`}
                 >
                   {tier.cta}

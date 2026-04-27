@@ -7,103 +7,76 @@ import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    title: "AI Receptionist & Voice",
-    description: "Never miss a call again. Our 24/7 AI voice agents handle inquiries, book appointments, and answer FAQs with a human-like voice.",
+    title: "AI Voice Agents",
+    description: "24/7 Human-like receptionist systems that handle inquiries and book appointments without human intervention.",
     icon: Mic,
-    color: "from-purple-500 to-blue-500",
-    shadow: "shadow-purple-500/20",
-    benefits: ["24/7 Call handling", "Human-like voice", "Automated booking"],
+    accent: "text-purple-500",
+    bg: "bg-purple-500/[0.03]"
   },
   {
+    title: "Business Automation",
+    description: "Enterprise-grade workflows connecting your entire stack. Lead syncing, CRM management, and auto-reporting.",
     icon: Bot,
-    title: "Automation-Based Solutions",
-    description: "We use smart workflows to connect your tools. Automated lead capture, data syncing, and internal notifications on autopilot.",
-    color: "from-blue-500 to-cyan-500",
-    shadow: "shadow-blue-500/20",
-    benefits: ["Zero-lead leakage", "Instant n8n triggers", "Automated workflows"],
+    accent: "text-blue-500",
+    bg: "bg-blue-500/[0.03]"
   },
   {
-    title: "High-Converting Websites",
-    description: "Designed specifically to turn visitors into paying customers. Optimized for speed, trust, and conversions.",
+    title: "Conversion Platforms",
+    description: "High-performance digital platforms engineered specifically to dominate local search and drive high-intent leads.",
     icon: Layout,
-    color: "from-purple-600 to-pink-600",
-    shadow: "shadow-pink-500/20",
-    benefits: ["Clinic-specific UX", "Speed optimized", "Trust-driven design"],
+    accent: "text-zinc-500",
+    bg: "bg-zinc-500/[0.03]"
   },
   {
+    title: "WhatsApp Ecosystems",
+    description: "Direct conversion funnels built inside WhatsApp. Automated qualifying and instant customer connectivity.",
     icon: MessageCircle,
-    title: "WhatsApp AI Funnels",
-    description: "Direct communication systems for instant conversion where your customers actually are. Powered by AI chat.",
-    color: "from-green-500 to-emerald-500",
-    shadow: "shadow-green-500/20",
-    benefits: ["One-click chat", "AI auto-replies", "High open rates"],
+    accent: "text-emerald-500",
+    bg: "bg-emerald-500/[0.03]"
   },
 ];
 
 export function Services() {
   return (
-    <section className="py-32 relative overflow-hidden" id="services">
+    <section className="py-32 relative" id="services">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-24 text-center">
+        <div className="mb-24 text-center lg:text-left">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-sm font-extrabold text-purple-500 mb-6 skeuo cursor-pointer transition-shadow active:skeuo-inset"
+            className="inline-flex items-center gap-2 mb-6"
           >
-            <Zap size={16} className="fill-current text-purple-500" />
-            ELITE SOLUTIONS
+             <div className="w-8 h-[1px] bg-purple-500" />
+             <span className="text-[0.65rem] font-black uppercase tracking-[0.4em] text-purple-500">Core Expertise</span>
           </motion.div>
-          <h2 className="text-5xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-7xl">
-            Everything you need <br />
-            to <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">dominate locally.</span>
+          <h2 className="text-4xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-6xl max-w-3xl leading-[1.1]">
+            Digital systems designed for <br />
+            <span className="text-zinc-400">absolute market authority.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.1, duration: 0.6, type: "spring", bounce: 0.4 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="group cursor-pointer"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
             >
-              <Card className={`h-full relative overflow-hidden p-10 border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl skeuo group-active:skeuo-inset transition-all duration-300`}>
-                <motion.div 
-                  className={`mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br ${service.color} text-white shadow-xl skeuo`}
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <service.icon size={36} />
-                </motion.div>
+              <Card className="h-full border-[var(--glass-border)] bg-[var(--card-bg)] p-8 hover:border-purple-500/20 transition-all duration-300">
+                <div className={`mb-8 flex h-14 w-14 items-center justify-center rounded-xl border border-[var(--glass-border)] bg-[var(--background)] ${service.accent}`}>
+                  <service.icon size={24} />
+                </div>
                 
-                <h3 className="text-3xl font-extrabold text-[var(--foreground)] mb-4 tracking-tight">{service.title}</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed text-lg">{service.description}</p>
+                <h3 className="text-lg font-bold text-[var(--foreground)] mb-3 tracking-tight uppercase">{service.title}</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed text-sm font-medium">{service.description}</p>
                 
-                <ul className="space-y-4 mb-10">
-                  {service.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm font-bold text-zinc-400 dark:text-zinc-500">
-                      <div className="h-3 w-3 rounded-full bg-purple-500/50 skeuo-inset" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-
-                <Button variant="ghost" className="p-0 hover:bg-transparent group/btn active:scale-95 transition-transform">
-                  <span className="text-lg font-extrabold tracking-tight group-hover/btn:text-purple-500 transition-colors">
-                    LEARN MORE
-                  </span>
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-2 group-hover/btn:text-purple-500" />
+                <Button variant="ghost" className="p-0 h-auto hover:bg-transparent group/btn text-purple-600 dark:text-purple-400 text-xs font-black uppercase tracking-widest">
+                  Explore Solution
+                  <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
-
-                {/* Decorative Background Icon */}
-                <service.icon size={200} className="absolute -right-20 -bottom-20 text-[var(--foreground)] opacity-[0.03] group-hover:text-purple-500 group-hover:opacity-10 transition-all duration-500 pointer-events-none group-hover:rotate-12" />
               </Card>
             </motion.div>
           ))}

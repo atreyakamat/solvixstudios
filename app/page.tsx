@@ -14,7 +14,7 @@ import { Header } from "@/components/sections/Header";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#050507] text-zinc-100 selection:bg-blue-500/30">
+    <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-purple-500/30 transition-colors duration-400">
       <Header />
       <main>
         <Hero />
