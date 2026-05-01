@@ -84,11 +84,11 @@ export function Services() {
                 </motion.div>
                 
                 <h3 className="text-3xl font-black text-[var(--foreground)] mb-4 tracking-tight">{service.title}</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed text-lg">{service.description}</p>
+                <p className="text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed text-lg">{service.description}</p>
                 
                 <ul className="space-y-4 mb-10">
                   {service.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm font-bold text-zinc-400 dark:text-zinc-500">
+                    <li key={i} className="flex items-center gap-3 text-sm font-bold text-zinc-500 dark:text-zinc-500">
                       <div className="h-3 w-3 rounded-full bg-purple-500/50 skeuo-inset" />
                       {benefit}
                     </li>
@@ -103,7 +103,7 @@ export function Services() {
                 </Button>
 
                 {/* Decorative Background Icon */}
-                <service.icon size={200} className="absolute -right-20 -bottom-20 text-[var(--foreground)] opacity-[0.03] group-hover:text-purple-500 group-hover:opacity-10 transition-all duration-500 pointer-events-none group-hover:rotate-12" />
+                <service.icon size={200} className="absolute -right-20 -bottom-20 text-[var(--foreground)] opacity-[0.02] dark:opacity-[0.03] group-hover:text-purple-500 group-hover:opacity-10 transition-all duration-500 pointer-events-none group-hover:rotate-12" />
               </Card>
             </motion.div>
           ))}

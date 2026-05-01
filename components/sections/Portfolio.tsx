@@ -47,7 +47,7 @@ export function Portfolio() {
               Engineered for <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent italic">Results.</span>
             </h2>
             <p className="mt-8 text-xl font-bold text-zinc-500 italic leading-relaxed">
-              We don't just build websites; we build growth engines. 
+              We don&apos;t just build websites; we build growth engines. 
               See the transformation for yourself.
             </p>
           </div>

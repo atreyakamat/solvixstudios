@@ -8,7 +8,7 @@ const problems = [
   {
     icon: TrendingDown,
     title: "No consistent leads",
-    description: "You're relying on word-of-mouth while your competitors dominate local search and social media.",
+    description: "You&apos;re relying on word-of-mouth while your competitors dominate local search and social media.",
   },
   {
     icon: XCircle,
@@ -18,12 +18,12 @@ const problems = [
   {
     icon: Clock,
     title: "Manual follow-ups",
-    description: "Wasting hours chasing people who aren't interested. Your team should be closing.",
+    description: "Wasting hours chasing people who aren&apos;t interested. Your team should be closing.",
   },
   {
     icon: AlertTriangle,
     title: "Weak online presence",
-    description: "A website that looks like it's from 2015 erodes trust in seconds. Clients expect better.",
+    description: "A website that looks like it&apos;s from 2015 erodes trust in seconds. Clients expect better.",
   },
 ];
 
@@ -41,10 +41,10 @@ export function Problem() {
             <div className="text-purple-500 font-black tracking-widest uppercase text-xs mb-4">The Reality</div>
             <h2 className="text-5xl font-black tracking-tighter text-[var(--foreground)] sm:text-7xl mb-8">
               Running a business is hard. <br />
-              <span className="text-zinc-500 italic opacity-50">Generating leads shouldn't be.</span>
+              <span className="text-zinc-500 italic opacity-50">Generating leads shouldn&apos;t be.</span>
             </h2>
             <p className="text-xl font-bold text-zinc-500 italic leading-relaxed mb-10">
-              Most local businesses have a "leaky bucket" problem. 
+              Most local businesses have a &quot;leaky bucket&quot; problem. 
               They spend time and money on marketing, only for leads to 
               disappear into the void.
             </p>

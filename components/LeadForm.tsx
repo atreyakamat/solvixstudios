@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { N8N_WEBHOOK_URL } from "@/lib/constants";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY, N8N_WEBHOOK_URL, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export function LeadForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -16,28 +17,87 @@ export function LeadForm() {
     email: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "loading") return;
+    
     setStatus("loading");
+    setErrorMessage(null);
 
     try {
-      if (N8N_WEBHOOK_URL) {
-        await fetch(N8N_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            source: "Solvix Website",
-            timestamp: new Date().toISOString(),
-          }),
-        });
-      } else {
-        // Simulate delay if no webhook is provided
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+      let sent = false;
+      const errors: string[] = [];
+
+      // 1. Send via EmailJS if configured
+      if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+        try {
+          const result = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+              user_name: formData.name,
+              business_type: formData.businessType,
+              user_phone: formData.phone,
+              user_email: formData.email,
+              source: "Solvix Website",
+            },
+            EMAILJS_PUBLIC_KEY
+          );
+          if (result.status === 200) {
+            sent = true;
+          } else {
+            errors.push(`EmailJS returned status ${result.status}`);
+          }
+        } catch (emailError: any) {
+          console.error("EmailJS Error:", emailError);
+          errors.push(emailError?.text || emailError?.message || "EmailJS failed");
+        }
       }
-      setStatus("success");
-    } catch (error) {
+
+      // 2. Send via N8N if configured
+      if (N8N_WEBHOOK_URL && N8N_WEBHOOK_URL.startsWith("http")) {
+        try {
+          const response = await fetch(N8N_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...formData,
+              source: "Solvix Website",
+              timestamp: new Date().toISOString(),
+            }),
+          });
+          if (response.ok) {
+            sent = true;
+          } else {
+            errors.push(`Webhook returned status ${response.status}`);
+          }
+        } catch (fetchError: any) {
+          console.error("Webhook Error:", fetchError);
+          errors.push(fetchError?.message || "Webhook connection failed");
+        }
+      }
+
+      // Fallback: If no external services are configured, allow submission in dev
+      const noServicesConfigured = !EMAILJS_SERVICE_ID && (!N8N_WEBHOOK_URL || !N8N_WEBHOOK_URL.startsWith("http"));
+      
+      if (!sent && noServicesConfigured) {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        sent = true;
+      }
+
+      if (sent) {
+        setStatus("success");
+      } else {
+        const finalError = errors.length > 0 
+          ? `Submission failed: ${errors.join(". ")}` 
+          : "No submission service is configured correctly.";
+        throw new Error(finalError);
+      }
+    } catch (error: any) {
       console.error("Submission error:", error);
+      setErrorMessage(error.message || "Something went wrong.");
       setStatus("error");
     }
   };
@@ -54,7 +114,7 @@ export function LeadForm() {
         </div>
         <div>
           <h3 className="text-xl font-bold text-white">Audit Request Sent!</h3>
-          <p className="mt-2 text-zinc-400">We'll reach out to you on WhatsApp within 24 hours.</p>
+          <p className="mt-2 text-zinc-400">We&apos;ll reach out to you on WhatsApp within 24 hours.</p>
         </div>
       </motion.div>
     );
@@ -115,9 +175,18 @@ export function LeadForm() {
         )}
       </Button>
       {status === "error" && (
-        <p className="text-center text-sm text-red-400">
-          Something went wrong. Please try again or WhatsApp us.
-        </p>
+        <div className="space-y-2 text-center">
+          <p className="text-sm text-red-400">
+            {errorMessage || "Something went wrong. Please try again or WhatsApp us."}
+          </p>
+          <Button 
+            variant="ghost" 
+            className="text-xs text-zinc-500 hover:text-white"
+            onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
+          >
+            Contact via WhatsApp
+          </Button>
+        </div>
       )}
     </form>
   );

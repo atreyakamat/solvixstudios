@@ -8,7 +8,8 @@ import { Card } from "@/components/ui/card";
 const tiers = [
   {
     name: "Starter",
-    price: "₹6K–₹8K",
+    price: "₹8K–₹15K",
+
     description: "Ideal for new businesses needing a professional digital presence.",
     features: [
       "Custom 1-page high-converting website",
@@ -23,7 +24,7 @@ const tiers = [
   },
   {
     name: "Growth",
-    price: "₹8K–₹15K",
+    price: "₹15K–₹25K",
     description: "Our signature growth system with AI automation.",
     features: [
       "Multi-page custom design",
@@ -38,7 +39,7 @@ const tiers = [
   },
   {
     name: "Premium",
-    price: "₹15K+",
+    price: "₹25K+",
     description: "Fully custom enterprise-grade automation systems.",
     features: [
       "Custom web application",
@@ -85,10 +86,10 @@ export function Pricing() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="relative flex h-full"
             >
-              <Card className={`relative flex flex-col w-full p-10 transition-all duration-500 hover:scale-[1.02] ${
+              <Card className={`relative flex flex-col w-full p-10 transition-all duration-500 hover:scale-[1.02] glass-morphism ${
                 tier.popular 
-                ? "border-purple-500 bg-gradient-to-b from-purple-500/[0.05] to-transparent shadow-2xl shadow-purple-500/10 ring-1 ring-purple-500/50" 
-                : "hover:border-purple-500/30"
+                ? "border-purple-500/50 dark:border-purple-500 bg-gradient-to-b from-purple-500/[0.05] to-transparent shadow-2xl shadow-purple-500/10 ring-1 ring-purple-500/50" 
+                : "border-[var(--glass-border)] hover:border-purple-500/30"
               }`}>
                 {tier.popular && (
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-purple-500/20">
@@ -101,13 +102,13 @@ export function Pricing() {
                   <div className="flex items-baseline justify-center lg:justify-start gap-2 mb-6">
                     <span className="text-5xl font-black text-[var(--foreground)] tracking-tighter italic">{tier.price}</span>
                   </div>
-                  <p className="text-zinc-500 font-medium leading-relaxed">{tier.description}</p>
+                  <p className="text-zinc-600 dark:text-zinc-500 font-medium leading-relaxed">{tier.description}</p>
                 </div>
 
                 <div className="space-y-5 mb-12 flex-grow">
                   {tier.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-4 text-sm font-bold text-zinc-400 dark:text-zinc-500">
-                      <div className="h-5 w-5 rounded-full bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <div key={feature} className="flex items-start gap-4 text-sm font-bold text-zinc-500 dark:text-zinc-500">
+                      <div className="h-5 w-5 rounded-full bg-purple-500/10 dark:bg-purple-500/20 flex items-center justify-center shrink-0">
                         <Check className="h-3 w-3 text-purple-500" strokeWidth={4} />
                       </div>
                       <span className="leading-tight">{feature}</span>

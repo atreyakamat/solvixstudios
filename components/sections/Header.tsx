@@ -16,17 +16,23 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!mounted) return null;
+
+  const currentTheme = resolvedTheme || theme;
+  const toggleTheme = () => setTheme(currentTheme === "dark" ? "light" : "dark");
 
   return (
     <motion.header
@@ -62,10 +68,10 @@ export function Header() {
 
         <div className="hidden items-center gap-6 lg:flex">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
             className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] text-zinc-500 hover:text-purple-500 transition-all"
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            {currentTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <Button asChild className="shadow-lg shadow-purple-500/20">
             <a href="#contact" className="group">
@@ -78,10 +84,10 @@ export function Header() {
         {/* Mobile Toggle */}
         <div className="flex items-center gap-4 lg:hidden">
            <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
             className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)]"
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            {currentTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button
             className="text-[var(--foreground)]"

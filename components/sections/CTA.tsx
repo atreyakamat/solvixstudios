@@ -70,7 +70,7 @@ export function CTA() {
 
             <div className="mb-10">
               <h3 className="text-3xl font-black text-[var(--foreground)] mb-3 tracking-tight uppercase">Request Free Audit</h3>
-              <p className="text-lg font-bold text-zinc-500 italic">We'll identify every leak in your current funnel.</p>
+              <p className="text-lg font-bold text-zinc-500 italic">We&apos;ll identify every leak in your current funnel.</p>
             </div>
             <LeadForm />
           </motion.div>

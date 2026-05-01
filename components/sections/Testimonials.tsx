@@ -51,7 +51,7 @@ export function Testimonials() {
                 </div>
                 
                 <p className="text-xl font-bold text-zinc-500 italic leading-relaxed mb-10 group-hover:text-[var(--foreground)] transition-colors">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 
                 <div className="flex items-center gap-5">

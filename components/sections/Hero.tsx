@@ -30,8 +30,8 @@ export function Hero() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20" id="hero">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="hero-gradient absolute inset-0 opacity-80" />
-        <div className="bg-dot-pattern absolute inset-0 opacity-[0.15]" />
+        <div className="hero-gradient absolute inset-0 opacity-80 dark:opacity-80" />
+        <div className="bg-dot-pattern absolute inset-0 opacity-[0.1] dark:opacity-[0.15]" />
         
         {/* Flashy Floating Blobs */}
         <motion.div 
@@ -41,7 +41,7 @@ export function Hero() {
             scale: [1, 1.2, 1],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -left-20 h-[500px] w-[500px] rounded-full bg-purple-600/20 blur-[120px]" 
+          className="absolute top-1/4 -left-20 h-[500px] w-[500px] rounded-full bg-purple-600/10 dark:bg-purple-600/20 blur-[120px]" 
         />
         <motion.div 
           animate={{ 
@@ -50,7 +50,7 @@ export function Hero() {
             scale: [1.2, 1, 1.2],
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 -right-20 h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[120px]" 
+          className="absolute bottom-1/4 -right-20 h-[500px] w-[500px] rounded-full bg-blue-600/10 dark:bg-blue-600/20 blur-[120px]" 
         />
         
         {/* Floating Skeuomorphic Icons */}
